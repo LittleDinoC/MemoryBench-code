@@ -4,9 +4,6 @@ from typing import Optional, Union, Dict
 
 from src.agent.base_agent import BaseAgentConfig
 from src.agent.feedback import FeedbackAgentConfig
-from src.agent.a_mem import AMemAgentConfig
-from src.agent.mem0 import Mem0AgentConfig
-from src.agent.bm25 import BM25AgentConfig
 
 
 def load_class(class_type):
