@@ -21,14 +21,9 @@ class OpenAIController(BaseLLMController):
             if api_key is None:
                 raise ValueError("OpenAI API key not found. Set OPENAI_API_KEY environment variable.")
             # self.client = OpenAI(api_key=api_key)
-            # [TODO] tyc: for thuir openai server
             self.client = OpenAI(
-                base_url="https://svip.xty.app/v1", 
+                base_url = os.getenv("OPENAI_BASE_URL", "https://api.openai.com/v1"),
                 api_key=api_key,
-                http_client=httpx.Client(
-                    base_url="https://svip.xty.app/v1",
-                    follow_redirects=True,
-                ),
             )
         except ImportError:
             raise ImportError("OpenAI package not found. Install it with: pip install openai")
