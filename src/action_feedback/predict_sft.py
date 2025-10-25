@@ -87,9 +87,8 @@ def main(args):
     )
     solver.MAX_THREADS = args.threads
     
-    ok_cnt = 0
-    for action in ["like", "copy"]:
-        for epoch in range(1, 6):
+    for action in [args.action_feedback]:
+        for epoch in [args.num_epochs]:
             lora_path = os.path.join(
                 f"./action_feedback/sft_models/lr={args.learning_rate}/", 
                 args.domain, 
@@ -140,7 +139,6 @@ def main(args):
             assert response.status_code == 200, f"Failed to unload LoRA adapter: {response.text}"
             print(colored(f"Unloaded LoRA adapter sft_adapter", "green"))
 
-    return ok_cnt
 
 if __name__ == "__main__":
     parser = ArgumentParser()
@@ -185,13 +183,18 @@ if __name__ == "__main__":
         type=int, 
         default=4,
         help="Number of threads to use for processing dialogs",
+    )    
+    parser.add_argument(
+        "--num_epochs",
+        type=int,
+        default=5,
     )
-    # parser.add_argument(
-    #     "--memory_cache_prefix",
-    #     type=str,
-    #     default="",
-    #     help="Prefix path to copy memory cache from",
-    # )
+    parser.add_argument(
+        "--action_feedback",
+        type=str,
+        choices=["like", "copy"],
+        required=True,
+    )
 
     parser.add_argument(
         "--learning_rate",
