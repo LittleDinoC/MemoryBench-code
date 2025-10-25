@@ -117,7 +117,7 @@ You need to specify the memory system using `--memory_system` (matching a config
 Example command:
 
 ```bash
-python -m src.generate_dialogs.reading --memory_system bm25_message --dataset locomo-0
+python -m src.generate_dialogs.reading --memory_system bm25_message --dataset Locomo-0
 ```
 
 ### Generation
@@ -133,7 +133,7 @@ Below is a brief introduction to each experiment.
 Run all off-policy experiments directly using:
 
 ```bash
-bash run_scripts/off_policy.sh
+python run_scripts/off_policy.py
 ```
 
 Since the Mem0 method takes too long to run on Open-Domain and LiSo tasks,
@@ -157,10 +157,10 @@ You can find more detailed parameter configuration in the code, including the nu
 Run all stepwise off-policy experiments with:
 
 ```bash
-bash run_scripts/stepwise_off_policy.sh
+python run_scripts/stepwise_off-policy.py
 ```
 
-The main script is `src/stepwise_off_policy.py`, sharing the same configuration options as the off-policy setup mostly.
+The main script is `src/stepwise_off-policy.py`, sharing the same configuration options as the off-policy setup mostly.
 Specifically, you can specify the `--batch_size` of dialogues to be memorized in a single step, which defaults to 100.
 The results are stored in `step_off-policy/results` by default.
 
@@ -175,7 +175,7 @@ python -m src.stepwise_off-policy --memory_system bm25_message --domain Open-Dom
 Run all on-policy experiments with:
 
 ```bash
-bash run_scripts/on_policy.sh
+python run_scripts/on_policy.py
 ```
 
 The main script is `src/on_policy.py`, sharing the same configuration options as the off-policy setup mostly.
@@ -188,7 +188,7 @@ Example command:
 python -m src.stepwise_off-policy --memory_system bm25_message --domain Open-Domain --dataset_config configs/datasets/domain.json
 ```
 
-#### Train Performance
+#### Training Performance
 
 You can measure training set performance via:
 
@@ -239,6 +239,12 @@ The training script is `train_sft_lora.py`, and the inference script is `predict
 
 You can specify the action type using the `--action_feedback` argument,  
 which supports two options: `like` or `copy`.
+
+You can run all action feedback experiments using:
+
+```bash
+python run_scripts/action_feedback.py
+```
 
 ### Evaluation
 
