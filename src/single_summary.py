@@ -56,7 +56,7 @@ def main(config_path, result_path, old_min_max_data):
                     def solve_item(cur_idx, item):
                         # if item["dataset"].startswith("Locomo") or item["dataset"].startswith("DialSim"):
                         #     return None, None
-
+                        test_metrics = config[item["dataset"]]["test_metrics"]
                         if item["dataset"].startswith("Locomo"):
                             item["dataset"] = "Locomo"
                         if item["dataset"] in datasetname_to_class:
@@ -72,9 +72,11 @@ def main(config_path, result_path, old_min_max_data):
                                 data_item["input_prompt"] if "input_prompt" in data_item else data_item["input_chat_messages"][-1]['content'],
                                 data_item['info'], predict_result["response"], item["metrics"]
                             )
+                            metrics_name = list(res.keys())[0]
                         else:
                             res = item["metrics"]
-                        return item["dataset"], res
+                            metrics_name = test_metrics[0]
+                        return item["dataset"], res[metrics_name]
 
 
                     total_res = []
@@ -92,7 +94,7 @@ def main(config_path, result_path, old_min_max_data):
                         metrics_name = list(res.keys())[0]
                         if dataset_name not in values:
                             values[dataset_name] = []
-                        values[dataset_name].append(res[metrics_name] if type(res[metrics_name]) in [int, float] else (1 if res[metrics_name] is True else 0))
+                        values[dataset_name].append(res if type(res) in [int, float] else (1 if res is True else 0))
 
                     total_ret = {"summary": {}, "average": {}, "minmax_normalized_average": {}, "z_normalized_average": {}}
                     for dataset in values:

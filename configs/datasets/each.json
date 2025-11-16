@@ -9,7 +9,7 @@
         "class_name": "Locomo.Locomo_Dataset"
     },
     "Locomo-1": {
-        "dataset_name": "Locomo-0",
+        "dataset_name": "Locomo-1",
         "task_tag": "Long-Short",
         "domain_tag": "Open-Domain",
         "data_path": "./raw/Locomo/locomo10.json",
@@ -18,7 +18,7 @@
         "class_name": "Locomo.Locomo_Dataset"
     },
     "Locomo-2": {
-        "dataset_name": "Locomo-0",
+        "dataset_name": "Locomo-2",
         "task_tag": "Long-Short",
         "domain_tag": "Open-Domain",
         "data_path": "./raw/Locomo/locomo10.json",
@@ -27,7 +27,7 @@
         "class_name": "Locomo.Locomo_Dataset"
     },
     "Locomo-3": {
-        "dataset_name": "Locomo-0",
+        "dataset_name": "Locomo-3",
         "task_tag": "Long-Short",
         "domain_tag": "Open-Domain",
         "data_path": "./raw/Locomo/locomo10.json",
@@ -36,7 +36,7 @@
         "class_name": "Locomo.Locomo_Dataset"
     },
     "Locomo-4": {
-        "dataset_name": "Locomo-0",
+        "dataset_name": "Locomo-4",
         "task_tag": "Long-Short",
         "domain_tag": "Open-Domain",
         "data_path": "./raw/Locomo/locomo10.json",
@@ -45,7 +45,7 @@
         "class_name": "Locomo.Locomo_Dataset"
     },
     "Locomo-5": {
-        "dataset_name": "Locomo-0",
+        "dataset_name": "Locomo-5",
         "task_tag": "Long-Short",
         "domain_tag": "Open-Domain",
         "data_path": "./raw/Locomo/locomo10.json",
@@ -54,7 +54,7 @@
         "class_name": "Locomo.Locomo_Dataset"
     },
     "Locomo-6": {
-        "dataset_name": "Locomo-0",
+        "dataset_name": "Locomo-6",
         "task_tag": "Long-Short",
         "domain_tag": "Open-Domain",
         "data_path": "./raw/Locomo/locomo10.json",
@@ -63,7 +63,7 @@
         "class_name": "Locomo.Locomo_Dataset"
     },
     "Locomo-7": {
-        "dataset_name": "Locomo-0",
+        "dataset_name": "Locomo-7",
         "task_tag": "Long-Short",
         "domain_tag": "Open-Domain",
         "data_path": "./raw/Locomo/locomo10.json",
@@ -72,7 +72,7 @@
         "class_name": "Locomo.Locomo_Dataset"
     },
     "Locomo-8": {
-        "dataset_name": "Locomo-0",
+        "dataset_name": "Locomo-8",
         "task_tag": "Long-Short",
         "domain_tag": "Open-Domain",
         "data_path": "./raw/Locomo/locomo10.json",
@@ -81,7 +81,7 @@
         "class_name": "Locomo.Locomo_Dataset"
     },
     "Locomo-9": {
-        "dataset_name": "Locomo-0",
+        "dataset_name": "Locomo-9",
         "task_tag": "Long-Short",
         "domain_tag": "Open-Domain",
         "data_path": "./raw/Locomo/locomo10.json",

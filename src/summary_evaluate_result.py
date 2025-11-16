@@ -37,6 +37,7 @@ def main(config_path, result_path):
                 predict_results = sorted(predict_results, key=lambda x: (x["dataset"], x["test_idx"]))
                 
                 def solve_item(cur_idx, item):
+                    test_metrics = config[item["dataset"]]["test_metrics"]
                     if item["dataset"].startswith("Locomo"):
                         item["dataset"] = "Locomo"
                     if item["dataset"] not in end_results[tag_type][tag]["details"]:
@@ -60,9 +61,11 @@ def main(config_path, result_path):
                             data_item["input_prompt"] if "input_prompt" in data_item else data_item["input_chat_messages"][-1]['content'],
                             data_item['info'], predict_result["response"], item["metrics"]
                         )
+                        metrics_name = list(res.keys())[0]
                     else:
                         res = item["metrics"]
-                    return item["dataset"], res
+                        metrics_name = test_metrics[0]
+                    return item["dataset"], res[metrics_name]
 
                 assert len(evaluate_details) == len(predict_results), f"{baseline_dir} {result_dirs[0]} Length mismatch: {len(evaluate_details)} vs {len(predict_results)}"
                 
@@ -76,8 +79,7 @@ def main(config_path, result_path):
                 # for i, item in tqdm(enumerate(evaluate_details), desc=f"Processing {tag_type}-{tag}-{b}", total=len(evaluate_details)):
 
                 for dataset_name, res in total_res:    
-                    metrics_name = list(res.keys())[0]
-                    end_results[tag_type][tag]["details"][dataset_name][b].append(res[metrics_name] if type(res[metrics_name]) in [int, float] else (1 if res[metrics_name] is True else 0))
+                    end_results[tag_type][tag]["details"][dataset_name][b].append(res if type(res) in [int, float] else (1 if res is True else 0))
             
             # 对domain或task计算平均值，min-max归一化，并记录归一化所需的最大最小值，以及中位数
             dataset_level = {dataset: [] for dataset in end_results[tag_type][tag]["details"]}
